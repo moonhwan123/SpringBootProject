@@ -2,6 +2,7 @@ package com.example.guestbook.controller;
 
 import com.example.guestbook.dto.GuestbookDTO;
 import com.example.guestbook.dto.PageRequestDTO;
+import com.example.guestbook.entity.Guestbook;
 import com.example.guestbook.service.GuestbookService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -61,6 +62,38 @@ public class GuestbookController {
         redirectAttributes.addFlashAttribute("msg", gno);
 
         return "redirect:/guestbook/list";
+    }
+
+    @GetMapping({"/read","/modify"})
+    public void read(long gno, @ModelAttribute("requestDTO") PageRequestDTO requestDTO, Model model){
+        log.info("GuestBook Controller Get read or modify................");
+
+        GuestbookDTO dto = service.read(gno);
+        model.addAttribute("dto",dto);
+    }
+
+    @PostMapping("/remove")
+    public String remove(long gno, RedirectAttributes redirectAttributes){
+        log.info("GuestBook Controller Post remove................");
+
+        service.remove(gno);
+
+        redirectAttributes.addFlashAttribute("msg",gno);
+
+        return "redirect:/guestbook/list";
+    }
+
+    @PostMapping("/modify")
+    public String modify(GuestbookDTO dto, @ModelAttribute("requestDTO")PageRequestDTO requestDTO, RedirectAttributes redirectAttributes){
+        log.info("GuestBook Controller Post remove................");
+        log.info("dto : " + dto);
+
+        service.modify(dto);
+
+        redirectAttributes.addAttribute("page",requestDTO.getPage());
+        redirectAttributes.addAttribute("gno",dto.getGno());
+
+        return "redirect:/guestbook/read";
     }
 
 }
