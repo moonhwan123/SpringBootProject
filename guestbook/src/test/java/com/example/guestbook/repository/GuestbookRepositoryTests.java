@@ -105,4 +105,12 @@ public class GuestbookRepositoryTests {
 
     }
 
+
+    @Test
+    public void testSearch1() {
+
+        guestbookRepository.search1();
+
+    }
+
 }
