@@ -24,6 +24,9 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
     Page<Object[]> getListPage(Pageable pageable);
 
 
+//    @Query("select m,mi from Movie m left outer join MovieImage mi on mi.movie = m where m.mno = :mno")
+//    List<Object[]> getMovieWithAll(Long mno);
+
     @Query("select m, mi ,avg(coalesce(r.grade,0)),  count(r)" +
             " from Movie m left outer join MovieImage mi on mi.movie = m " +
             " left outer join Review  r on r.movie = m "+

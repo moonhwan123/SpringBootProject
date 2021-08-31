@@ -49,7 +49,7 @@ public class ReviewRepositoryTests {
     @Test
     public void testGetMovieReviews() {
 
-        Movie movie = Movie.builder().mno(92L).build();
+        Movie movie = Movie.builder().mno(96L).build();
 
         List<Review> result = reviewRepository.findByMovie(movie);
 

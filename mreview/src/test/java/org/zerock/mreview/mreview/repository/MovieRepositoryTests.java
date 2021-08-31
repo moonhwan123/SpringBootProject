@@ -59,7 +59,7 @@ public class MovieRepositoryTests {
     @Test
     public void testListPage(){
 
-        PageRequest pageRequest = PageRequest.of(10,10, Sort.by(Sort.Direction.DESC, "mno"));
+        PageRequest pageRequest = PageRequest.of(0,10, Sort.by(Sort.Direction.DESC, "mno"));
 
         Page<Object[]> result = movieRepository.getListPage(pageRequest);
 
@@ -71,7 +71,7 @@ public class MovieRepositoryTests {
     @Test
     public void testGetMovieWithAll() {
 
-        List<Object[]> result = movieRepository.getMovieWithAll(92L);
+        List<Object[]> result = movieRepository.getMovieWithAll(96L);
 
         System.out.println(result);
 
