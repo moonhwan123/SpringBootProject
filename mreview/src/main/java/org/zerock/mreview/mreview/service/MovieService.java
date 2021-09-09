@@ -4,6 +4,8 @@ package org.zerock.mreview.mreview.service;
 
 import org.zerock.mreview.mreview.dto.MovieDTO;
 import org.zerock.mreview.mreview.dto.MovieImageDTO;
+import org.zerock.mreview.mreview.dto.PageRequestDTO;
+import org.zerock.mreview.mreview.dto.PageResultDTO;
 import org.zerock.mreview.mreview.entity.Movie;
 import org.zerock.mreview.mreview.entity.MovieImage;
 
@@ -16,9 +18,9 @@ public interface MovieService {
 
     Long register(MovieDTO movieDTO);
 
-//    PageResultDTO<MovieDTO, Object[]> getList(PageRequestDTO requestDTO); //목록 처리
-//
-//    MovieDTO getMovie(Long mno);
+    PageResultDTO<MovieDTO, Object[]> getList(PageRequestDTO requestDTO); //목록 처리
+
+    MovieDTO getMovie(Long mno);
 
     default MovieDTO entitiesToDTO(Movie movie, List<MovieImage> movieImages, Double avg, Long reviewCnt){
         MovieDTO movieDTO = MovieDTO.builder()
