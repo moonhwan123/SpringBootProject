@@ -1,5 +1,6 @@
 package com.example.club.controller;
 
+import com.example.club.security.dto.ClubAuthMemberDTO;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -16,23 +17,23 @@ public class SampleController {
         log.info("exAll..........");
     }
 
-    @GetMapping("/member")
-    public void exMember(){
-        log.info("exMember..........");
-    }
+//    @GetMapping("/member")
+//    public void exMember(){
+//        log.info("exMember..........");
+//    }
 
     @GetMapping("/admin")
     public void exAdmin(){
         log.info("exAdmin..........");
     }
 
-//    @GetMapping("/member")
-//    public void exMember(@AuthenticationPrincipal ClubAuthMemberDTO clubAuthMember){
-//
-//        log.info("exMember..........");
-//
-//        log.info("-------------------------------");
-//        log.info(clubAuthMember);
-//
-//    }
+    @GetMapping("/member")
+    public void exMember(@AuthenticationPrincipal ClubAuthMemberDTO clubAuthMember){
+
+        log.info("exMember..........");
+
+        log.info("-------------------------------");
+        log.info(clubAuthMember);
+
+    }
 }
